@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  attacker:
+    build:
+      context: .
+      dockerfile: attacker.dockerfile
+    hostname: attacker-host
+    networks:
+      - death
+
+  client:
+    build:
+      context: .
+      dockerfile: client.dockerfile
+    hostname: client-host
+    networks:
+      - death
+
+networks:
+  death:
+    driver: bridge
